@@ -4,4 +4,8 @@ Git tracks changes of files.
 Git test to Github.
 Creating a new branch is quick and simple.
 new content & and simple 1.
+<<<<<<< Updated upstream
 fix bug1
+=======
+test bug
+>>>>>>> Stashed changes
