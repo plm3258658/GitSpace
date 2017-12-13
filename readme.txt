@@ -8,3 +8,4 @@ fix bug1
 test bug
 old branch dev
 new branch dev
+test 3
