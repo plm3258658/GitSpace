@@ -20,6 +20,7 @@ public class main {
 			}).start();
 			//lambda
 			new Thread(()-> System.out.println("Hello World ! 2")).start();
+			//TEST LOCL IDEA
 	}
 
 }
