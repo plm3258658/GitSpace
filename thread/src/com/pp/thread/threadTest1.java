@@ -1,5 +1,8 @@
 package com.pp.thread;
 
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+
 public class threadTest1 implements Runnable {
 	private String title;
 	public threadTest1(String title){
