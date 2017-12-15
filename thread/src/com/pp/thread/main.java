@@ -1,5 +1,15 @@
 package com.pp.thread;
 
+@FunctionalInterface //函数表达式接口定义注解
+interface IMessage{
+	 public void print(String a);
+}
+//方法引用
+@FunctionalInterface
+interface IUtil<T>{
+	public T change();
+}
+
 public class main {
 
 	public static void main(String[] args) {
@@ -20,6 +30,14 @@ public class main {
 			}).start();
 			//lambda
 			new Thread(()-> System.out.println("Hello World ! 2")).start();
+			IMessage msg=(a)  ->  System.out.println(a);
+			IMessage msg2=System.out::println;
+			msg.print("abc");
+			msg2.print("cba");
+			//1.8方法引用
+			IUtil<String> iu="hello" :: toUpperCase;
+			System.out.println(iu.change());
+			//TEST LOCL IDEA
 	}
 
 }
