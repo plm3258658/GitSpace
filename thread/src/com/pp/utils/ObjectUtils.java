@@ -30,7 +30,7 @@ public class ObjectUtils {
         if(method!=null){
 //            return method.invoke(wrapObject);
             Object obj=method.invoke(wrapObject);
-            if(obj ==null){//实例化对象，取得类对象的类型
+            if(obj ==null){//如果没有实例化对象，取得类对象的类型，并实例化对象
                 obj=field.getType().newInstance();
                 setObjectValue(wrapObject,attribute,obj);
             }
