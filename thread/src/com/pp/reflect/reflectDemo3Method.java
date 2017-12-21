@@ -13,7 +13,7 @@ class Person2{
         this.name = name;
     }
 }
-public class reflectDemoMethod {
+public class reflectDemo3Method {
     public static void main(String[] args) throws  Exception{
         String attribute="name";
         String value="PP";
