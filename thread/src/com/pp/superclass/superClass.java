@@ -41,14 +41,14 @@ class Msg1<T>{
         this.note = note;
     }
 }
-public class superclass {
+public class superClass {
     public static  void main(String[] args){
         point<String> p =new point<>();
         p.setX("abc");
         p.setY("dbc");
         System.out.println("x="+p.getX()+"/y="+p.getY());
         fun(p);
-        Integer data[]=fun3(1,2,3,4);
+        Integer[] data=fun3(1,2,3,4);
         for(int temp:data){
             System.out.println(temp);
         }
