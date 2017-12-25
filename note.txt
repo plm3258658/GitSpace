@@ -1,0 +1,139 @@
+web.xml：web服务启动时读取的配置文件
+
+servlet:
+Servlet = Service + Applet，表示小服务程序
+一般理解为java服务器端的程序，用于处理客户端请求后使服务端浏览或修改数据，生成动态web内容。
+1.生命周期：生成servlet、服务请求、销毁（一般是在web应用关闭是销毁）
+2.在web.xml中配置servlet
+
+jsp:（理解为一种简化的servlet）
+工作原理：先将jsp编译成servlet（java代码），由服务器执行后再转为html传回前台。
+内置对象：out(输出)/request/response/session/cooike/application/pageContext/page/exception
+
+spring:
+aop(面向切面):
+
+ioc(控制反转)-DI(依赖注入):
+当需要该对象时，通过配置的xml文件经由java反射方式加载出对应的对象。
+BeanFactory(bean工厂)，IOC容器
+bean加载发生在第一次加载它时
+
+反射:
+反射的世界里看重的不再是一个对象，而是对象身后的组成（类/构造/普通/成员等）
+Class类的产生模式有三种：
+	1.任何的实例化对象可以通过Object中的getClass()方法取得类对象
+	2.“类.class”:直接根据某一具体的类来取得Class类的实例化对象
+	3.使用class类中提供的方法forName()
+	第2/3中方法取得class对象后，通过newInstance方法实例化对象
+	通过反射类改进的工厂设计模式最大的特征在于可以方便动态进行子类的扩充操作，
+	而关键词new会造成耦合问题
+	从实际的开发来讲，工厂类使用泛型之后，可以为更多的接口服务。
+	在实际开发中掌握泛型和反射的组合使用，可以编写高可用的代码。
+	
+通过反射可以取得类结构上的关键信息：
+	1.父类信息
+	2.调用构造方法
+	3.调用普通方法（重要）
+		3.1：获取全部方法：public Method[] getMethods()throws SecurityException
+		3.2：获取指定方法：public Method getMethod(String name,Class<?>... parameterTypes)
+                 throws NoSuchMethodException,SecurityException
+		3.3：调用方法：invoke
+		好处是:不局限于某一具体类型的对象，而是可以通过Object类进行所有类的方法调用
+	4.调用成员
+		4.1：取得父类属性（属性都会封装所以一般这个用不到）
+			4.1.1：取得类中的全部属性：public Field[] getFields()throws SecurityException
+			4.1.2：取得类中指定名称的属性：public Field getField(String name)throws NoSuchFieldException,SecurityException
+		4.2：取得本类属性：
+			4.2.1：取得类中的全部属性：public Field[] getDeclaredFields()throws SecurityException
+			4.2.2：取得类中指定名称的属性：public Field getDeclaredField(String name)throws NoSuchFieldException,SecurityException
+		4.3：field类两个重要方法
+			4.3.1：取得内容（get）
+			4.3.2：设置内容（set）
+	
+	java的反射集成结构
+	classLoader(类加载器)
+	最大的好处是可以根据路径实现类的动态加载操作。大部分情况下并不需要自己实现类加载器。
+	从低到高：Bootstrap/ext/app/自定义。
+顺序：先加载出类对象，然后将类实例化，然后通过反射方法设置属性
+反射可以通过加载类后获取对象的构造函数、成员变量、方法类等元素
+
+stack栈：
+
+
+mybatis:
+mybatis拦截器：
+批量插入返回主键
+自带的分页工具
+  
+java.util.concurrent包用来进行高性能编程使用
+  
+多线程：
+1.线程状态
+start:线程就绪
+
+2.实现多线程的方法：实现Runable接口(推荐)或继承Thread或实现Callable接口
+	2.1.实现Runable接口：实现Run方法并用Start方法启动线程
+	2.2.Callable相对于Runable多了返回值。
+	Callable使用FutureTask对象来使用（public FutureTask(Callable<T> callable)）
+	2.3.线程优先级可能会影响线程顺序
+	2.4. MyThread mt=new MyThread();
+        new Thread(mt).start();
+		new Thread(mt,"A").start();//线程命名
+		Thread.currentThread().getName()//获取线程名称
+3.同步与死锁
+	synchronized：
+	1.如果是代码块，必须设置一个要锁定的对象
+	2.方法上使用
+	死锁(相关之间几个线程彼此之间相互关联等待着，就造成了死锁)：
+	如何避免死锁：
+	1.加锁顺序：确保所有线程按顺序加锁
+	2.加锁时限，超时则自动释放
+	3.死锁检测
+	等待与唤醒的机制：参考Object类中的wait(等待)，notify(唤醒第一个等待线程)
+	,notifyAll(唤醒全部，哪个优先级高哪个有可能优先执行)
+	sleep/wait区别：
+	sleep不会释放系统资源，wait会
+	sleep需要try/catch,wait不用
+	sleep可以在任何地方使用，wait是能用在synchronized中
+	sleep时间到了自动唤醒或用interrupt强行打断，wait需要notifu或notifyAll
+	sleep会让线程进入阻塞状态，wait让线程进入等待队列
+4.线程池
+	基本是唯一的好处：允许多个线程按照组的模式进行程序的处理，
+	这样在业务逻辑非常复杂的环境下，性能得到很好的提升。
+
+定时(JDK)：
+	
+enum是一个关键字，它定义了一个枚举类，它继承了Enum这个抽象类
+	
+事务:
+
+session:
+
+常用设计模式：
+单例、工厂、代理
+单例:只希望类中产生唯一的实例化对象。
+	饿汉式：构造方法私有化，外部无法产生新的实例化对象，只能用过static方法取得实例化对象。
+	懒汉式：当第一次使用singltion类对象的时候才会为其进行实例化的处理操作。（一般用静态内部类实现）
+	单例和多例的特点：
+		1.构造方法私有化
+		2.类内部一定会有一个static方法用于取得类的实例化对象
+数据库:
+
+时间复杂度
+阵列，树和哈希表
+
+链表、数组、哈希
+链表：每个节点都持有一个元素和下一个元素的指针，节点在内存中并不连续只是靠指针保持顺序。
+	当添加或删除时，只需修改指针。查询时则需要按顺序查找（或从中间截取后查找）。
+	所以链表查询慢，增删操作快。
+数组：数组的顺序在内存中是连续的，所以按顺序查找时速度比较快。
+	而增删时，需要移动操作位置后的其他节点，所以增删操作时比较慢。
+哈希：一个KEY/VALUE可以看做一个ENTRY对象。
+	HASHMAP通过一个数组+链表组成，数组的每一个元素为一个链表，对应的是一个HASH值。
+	当ENTRY的KEY的HASH值一致是，会把这些ENTRY放在同一个链表中，新添加的ENTRY会放在链表前。
+	查询元素时，先根据KEY的HASH值查询到在数组中的位置，然后通过KEY的Equals方法查到链表中需要的元素。
+	
+
+redis:
+使用jedis操作redis。
+先连接redis然后操作。
