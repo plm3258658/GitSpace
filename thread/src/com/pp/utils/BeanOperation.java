@@ -16,14 +16,14 @@ public class BeanOperation {
         //如果想进行内容的设置，那么必须要求将字符串拆分
         String[] result=msg.split("\\|");//分割各个属性与值的组合
             for(int i=0;i<result.length;i++){
-                String temp[]=result[i].split(":",2);//分割属性和值
+                String[] temp=result[i].split(":",2);//分割属性和值
 //                String attribute[]=temp[0].split(".");
+
                 String attribute=temp[0];//属性
 
                 String  value=temp[1];//属性对应的值
 
-
-                String fields[]=attribute.split("\\.");
+                String[] fields=attribute.split("\\.");
                 if(fields.length>2){
                     //多级vo
                     Object currentObject=actionObject;//传进来的默认的vo
