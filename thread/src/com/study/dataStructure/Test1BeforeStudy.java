@@ -11,25 +11,31 @@ public class Test1BeforeStudy {
         String symbol=str1[1];
         int a=0;
         int residue=0;
-        for(int i=1;i<=1000;i+=2){
-            if(i==1){
-                if(sum<=i){
-                    a=i;
-                }
-            }else if(i>1){
-                if(sum<=i*i-1){
-                    a=i;
-                    break;
+        int b=0;
+        if(sum>0 && sum<=1000){
+            for(int i=1;i<=1000;i+=2){
+                b++;
+                if(i==1){
+                    if(sum<=i){
+                        a=i;
+                        break;
+                    }
+                }else if(i>1){
+                    if(sum<i*b+b-1){
+                        a=i-2;
+                        break;
+                    }else if((sum==i*b+b-1)){
+                        a=i;
+                        break;
+                    }
                 }
             }
-        }
-        if(a==1){
-            residue=sum-1;
-        }else{
-
-            residue=sum-(a*(a+1)/2+(a-1)/2);
-        }
-        for(int i=1;i<=a;i++){
+            if(a==1){
+                residue=sum-1;
+            }else{
+                residue=sum-(a*(a+1)/2+(a-1)/2);
+            }
+            for(int i=1;i<=a;i++){
                 if(i==1 || i==a){
                     for(int s=1;s<=a;s++){
                         System.out.print(symbol);
@@ -56,6 +62,7 @@ public class Test1BeforeStudy {
                     }
                 }
                 System.out.println();
+            }
         }
         System.out.println(residue);
     }
