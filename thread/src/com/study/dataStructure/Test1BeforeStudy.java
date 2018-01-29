@@ -2,6 +2,9 @@ package com.study.dataStructure;
 
 import java.util.Scanner;
 
+/**
+ * 打印沙漏
+ */
 public class Test1BeforeStudy {
     public static void main(String[] args) {
         Scanner input=new Scanner(System.in);
