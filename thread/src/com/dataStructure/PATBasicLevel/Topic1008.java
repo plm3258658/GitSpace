@@ -1,12 +1,13 @@
-package com.study.dataStructure;
+package com.dataStructure.PATBasicLevel;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * 1008
  * 数组元素循环右移的问题
  */
-public class Test2BeforeStudy {
+public class Topic1008 {
     public static void main(String[] args) {
         Scanner input1=new Scanner(System.in);
         StringBuffer sb1=new StringBuffer(input1.nextLine());
