@@ -1,7 +1,5 @@
 package com.pp.utils;
 
-import sun.misc.BASE64Encoder;
-
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
@@ -51,7 +49,6 @@ public class URLcode {
         System.out.println(Base64.getEncoder().encodeToString(HMAC));
 
 */
-/*
         //第一步
         StringBuffer sb=new StringBuffer();
         sb.append(URLEncoder.encode("AccessKeyId","UTF-8")
@@ -71,23 +68,14 @@ public class URLcode {
         sb2.append("GET&%2F&");
         sb2.append(URLEncoder.encode(sb.toString(),"UTF-8"));
         System.out.println(sb2.toString());
-*/
-
-        String sb3="GET&%2F&AccessKeyId%3Dtestid&Action%3DChat&Format%3Dxml&RegionId%3Dcn-qingdao&SignatureMethod%3DHMAC-SHA1&SignatureNonce%3D1324fd0e-e2bb-4bb1-917c-bd6e437f1710&SignatureVersion%3D1.0&Timestamp%3D2017-10-11T11%253A10%253A07Z&Version%3D2017-10-11";
-        System.out.println(sb3);
         //第三步
         String key="testsecret&";
-        SecretKey secretKey = new SecretKeySpec(key.getBytes("UTF-8"), "HmacSHA1");
-        System.out.println(key.getBytes("UTF-8"));
+        SecretKey secretKey = new SecretKeySpec(key.getBytes(), "HmacSHA1");
         Mac mac = Mac.getInstance("HmacSHA1");
         mac.init(secretKey);
-        byte[] HMAC=mac.doFinal(sb3.getBytes("UTF-8"));
-        System.out.println(HMAC.toString());
+        byte[] HMAC=mac.doFinal(sb2.toString().getBytes());
         //第四步
         String Signature=Base64.getEncoder().encodeToString(HMAC);
-//        String Signature=Base64.encodeBase64String
-//        BASE64Encoder encoder = new BASE64Encoder();
-//        String Signature = new String(Base64.encodeBase64(HMAC));
         System.out.println(Signature);
     }
 
