@@ -3,7 +3,6 @@ package com.pp.designModeDemo;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.Arrays;
 
 /**
  * 动态代理模式（核心）
